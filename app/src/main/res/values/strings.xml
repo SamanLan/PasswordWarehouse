@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">PasswordWarehouse</string>
+    <string name="menu_action_add">手工输入</string>
+    <string name="menu_action_add_paste">粘贴板识别</string>
+    <string name="menu_action_add_img">图片识别</string>
+    <string name="hint">搜索...</string>
+    <string name="menu_reset">重置密码</string>
+    <string name="menu_about">关于应用</string>
+    <string name="menu_backup">备份数据</string>
+    <string name="menu_import">导入数据</string>
+</resources>
