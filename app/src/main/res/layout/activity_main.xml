@@ -7,22 +7,37 @@
     android:layout_height="match_parent"
     tools:context="com.samanlan.passwordwarehouse.MainActivity">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/content_recyclerview"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="false">
 
-    </android.support.v7.widget.RecyclerView>
+        <View
+            android:background="@color/colorMain"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/content_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="22dp">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
 
     <com.mypopsy.widget.FloatingSearchView
         android:id="@+id/search"
-        fab:fsv_contentBackgroundColor="#fff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hint"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
-        android:paddingTop="16dp"
+        android:paddingTop="50dp"
+        fab:fsv_contentBackgroundColor="#fff"
         fab:fsv_menu="@menu/search_menu">
 
     </com.mypopsy.widget.FloatingSearchView>
@@ -35,15 +50,15 @@
         android:layout_marginBottom="10dp"
         android:layout_marginRight="10dp"
         fab:menu_animationDelayPerItem="50"
-        fab:menu_colorNormal="#DA4336"
-        fab:menu_colorPressed="#E75043"
+        fab:menu_colorNormal="@color/colorMain"
+        fab:menu_colorPressed="@color/colorMain"
         fab:menu_colorRipple="#99FFFFFF"
         fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
         fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
         fab:menu_shadowColor="#66000000"
         fab:menu_shadowRadius="4dp"
         fab:menu_shadowXOffset="1dp"
-        fab:menu_shadowYOffset="3dp"
+        fab:menu_shadowYOffset="2dp"
         fab:menu_showShadow="true">
 
         <com.github.clans.fab.FloatingActionButton
@@ -51,6 +66,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/menu_add"
+            fab:fab_colorNormal="@color/colorMain"
+            fab:fab_colorPressed="@color/colorMain"
             fab:fab_label="@string/menu_action_add"
             fab:fab_size="mini" />
 
@@ -59,6 +76,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/menu_paste"
+            fab:fab_colorNormal="@color/colorMain"
+            fab:fab_colorPressed="@color/colorMain"
             fab:fab_label="@string/menu_action_add_paste"
             fab:fab_size="mini" />
 

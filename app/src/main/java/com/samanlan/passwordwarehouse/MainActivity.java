@@ -1,5 +1,6 @@
 package com.samanlan.passwordwarehouse;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ActionMenuView;
@@ -9,11 +10,16 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.animation.SlideInBottomAnimation;
 import com.chad.library.adapter.base.loadmore.SimpleLoadMoreView;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.mypopsy.widget.FloatingSearchView;
 import com.samanlan.passwordwarehouse.adapter.MainContentAdapter;
+import com.samanlan.passwordwarehouse.bean.PwdBean;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,8 +49,8 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
         ButterKnife.bind(this);
         contentRecyclerview.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         contentAdapter = new MainContentAdapter(R.layout.item_main_content);
-        contentAdapter.openLoadAnimation();
-        contentAdapter.isFirstOnly(false);
+        contentAdapter.openLoadAnimation(new SlideInBottomAnimation());
+        contentAdapter.isFirstOnly(true);
         contentAdapter.setOnLoadMoreListener(this, contentRecyclerview);
         contentAdapter.setLoadMoreView(new SimpleLoadMoreView());
         contentAdapter.setEmptyView(R.layout.item_empty);
@@ -62,6 +68,16 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
                 return false;
             }
         });
+        getData();
+    }
+
+    private void getData() {
+        List<PwdBean> list = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            list.add(new PwdBean());
+        }
+        contentAdapter.addData(list);
+        contentAdapter.notifyDataSetChanged();
     }
 
     @OnClick({R.id.menu_item_add, R.id.menu_item_add_paste, R.id.menu_item_add_img})
@@ -69,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
         switch (view.getId()) {
             case R.id.menu_item_add:
                 menu.close(true);
+                startActivity(new Intent(this, AddActivity.class));
                 break;
             case R.id.menu_item_add_paste:
                 menu.close(true);

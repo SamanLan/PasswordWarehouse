@@ -4,6 +4,7 @@
     android:id="@+id/activity_lock"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/lock_bg"
     tools:context="com.samanlan.passwordwarehouse.LockActivity">
 
     <com.andrognito.patternlockview.PatternLockView

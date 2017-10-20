@@ -13,6 +13,7 @@ import com.andrognito.patternlockview.PatternLockView;
 import com.andrognito.patternlockview.listener.PatternLockViewListener;
 import com.andrognito.patternlockview.utils.PatternLockUtils;
 import com.gcssloop.encrypt.oneway.MD5Util;
+import com.samanlan.passwordwarehouse.dialog.PwdDialog;
 
 import java.util.List;
 
@@ -77,7 +78,7 @@ public class LockActivity extends AppCompatActivity {
             }
         });
         SharedPreferences sp = getSharedPreferences(SP_NAME, MODE_PRIVATE);
-        pwdImg = sp.getString("pwdImg", MD5Util.md5("0125", SALT));
+        pwdImg = sp.getString("pwdImg", "");
         pwdNum = sp.getString("pwdNum", "");
         if (TextUtils.isEmpty(pwdImg)) {
             setUserPwd(sp);
@@ -89,6 +90,9 @@ public class LockActivity extends AppCompatActivity {
      * @param sp sp
      */
     private void setUserPwd(SharedPreferences sp) {
-
+        Toast.makeText(LockActivity.this, R.string.first_tip, Toast.LENGTH_SHORT).show();
+        PwdDialog dialog = new PwdDialog(this);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
     }
 }
